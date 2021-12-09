@@ -32,7 +32,7 @@ import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 
 const useStyles = makeStyles({
   select: {
-    height: "110%",
+    height: "120%",
     "&:before": {
       borderBottom: "none",
     },

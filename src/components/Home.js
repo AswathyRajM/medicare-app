@@ -1,22 +1,22 @@
 import React from "react";
-import ProductContainer from "../components/ProductsContainer";
+import ProductContainer from "./ProductsContainer";
 import { makeStyles } from "@mui/styles";
 import { Box } from "@mui/system";
-import SideFilter from "../components/SideFilter";
-import ProductForm from "../components/ProductForm";
+import SideFilter from "./SideFilter";
+import ProductForm from "./ProductForm";
+import CustomizedSlider from "./CustomizedSlider";
 
 const useStyles = makeStyles({
   conatiner: {
-    width: "100%",
+    width: "auto%",
     height: "auto",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    height: "100%",
   },
   boxflex: {
     width: "100%",
-    margin: "1rem 6rem",
+    margin: "1rem 4rem",
     display: "flex",
     justifyContent: "space-around",
     height: "100%",
@@ -26,7 +26,7 @@ const useStyles = makeStyles({
     borderBottom: "none",
     width: "max-content",
     margin: "1rem 0",
-    marginRight: "1rem",
+    // marginRight: "1rem",
     width: "35%",
   },
   poductContainer: {
@@ -109,6 +109,9 @@ function Home() {
           </Box>
           <Box className={classes.sidemenu}>
             <ProductForm title={"Product Form"} Lists={Brands} />
+          </Box>
+          <Box className={classes.sidemenu}>
+            <CustomizedSlider />
           </Box>
         </Box>
         <Box className={classes.poductContainer}>

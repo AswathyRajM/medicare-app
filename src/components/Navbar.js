@@ -260,7 +260,7 @@ export default function PrimarySearchAppBar() {
           backgroundColor: "#E69A3A",
         }}
       >
-        <Toolbar sx={{ mx: 5 }}>
+        <Toolbar sx={{ mx: 4 }}>
           <Typography
             variant="h4"
             noWrap

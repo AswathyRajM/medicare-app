@@ -1,7 +1,7 @@
 import Navbar from "./components/Navbar";
 import "./App.css";
 import NavDropdown from "./components/NavDropdown";
-import Home from "./pages/Home";
+import Home from "./components/Home";
 
 function App() {
   return (

@@ -9,11 +9,11 @@ import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import ExpandLess from "@mui/icons-material/ExpandLess";
-import ExpandMore from "@mui/icons-material/ExpandMore";
 import { makeStyles } from "@mui/styles";
-import { styled } from "@mui/system";
+import { Box, styled } from "@mui/system";
 import Checkbox from "@mui/material/Checkbox";
+import { InputAdornment, TextField } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 
 const useStyles = makeStyles({
   nodeText: {
@@ -134,7 +134,20 @@ export default function CategoryWrapper(props) {
               </StyledTypography>
             }
           />
-
+          <Box sx={{ px: 3.25 }}>
+            <TextField
+              id="Search-product-orm"
+              placeholder="Search product form"
+              fullWidth
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+              }}
+            />
+          </Box>
           {Category.slice(0, 4).map((item) => {
             const labelId = `checkbox-list-label-${item.title}`;
 

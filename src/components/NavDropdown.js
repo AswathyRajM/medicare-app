@@ -2,13 +2,13 @@ import React from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Box } from "@mui/system";
 import { Typography } from "@mui/material";
-import { NavLink } from "react-router-dom";
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
   boxContainer: {
-    width: "auto",
+    width: "auto  ",
     height: "auto",
+    display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
     borderBottom: "1px solid #cfcfcf",
@@ -20,7 +20,6 @@ const useStyles = makeStyles({
     alignItems: "center",
     justifyContent: "space-between",
     padding: "1rem",
-    color: "#E69A3A",
     cursor: "pointer",
   },
 });
@@ -38,22 +37,18 @@ function NavDropdown() {
   ];
   return (
     <>
-      <Box className={classes.boxContainer} sx={{ mx: 5 }}>
-        <Box className={classes.nav}>
-          <Typography>All Medicines</Typography>
-          <KeyboardArrowDownIcon />
-        </Box>
-        {links.map((link) => {
+      <Box className={classes.boxContainer} sx={{ mx: 6.5 }}>
+        {links.map((link, i) => {
+          if (i === 0) {
+            return (
+              <Box className={classes.nav} sx={{ color: "#E69A3A" }}>
+                <Typography>All Medicines</Typography>
+                <KeyboardArrowDownIcon />
+              </Box>
+            );
+          }
           return (
-            <Box
-              sx={{
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                padding: "1rem",
-                cursor: "pointer",
-              }}
-            >
+            <Box className={classes.nav}>
               <Typography>{link}</Typography>
               <KeyboardArrowDownIcon />
             </Box>

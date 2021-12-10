@@ -60,7 +60,7 @@ const StyledListItemIcon = styled(ListItemIcon)(`
   marign-right: 1rem;
 `);
 
-export default function CategoryWrapper(props) {
+export default function ProductForm(props) {
   const [expanded, setExpanded] = React.useState(false);
   const [listOpen, setListOpen] = React.useState(false);
   const [checked, setChecked] = React.useState([]);
@@ -123,11 +123,11 @@ export default function CategoryWrapper(props) {
               }}
             />
           </Box>
-          {Category.slice(0, 4).map((item) => {
+          {Category.slice(0, 4).map((item, index) => {
             const labelId = `checkbox-list-label-${item.title}`;
 
             return (
-              <StyledList>
+              <StyledList key={index}>
                 <StyledListItemButton
                   sx={{ pl: 1 }}
                   onClick={handleToggle(item.title)}
@@ -161,7 +161,7 @@ export default function CategoryWrapper(props) {
               const labelId = `checkbox-list-label-${item.title}`;
 
               return (
-                <StyledList>
+                <StyledList key={index}>
                   <StyledListItemButton
                     onClick={handleToggle(item.title)}
                     sx={{ pl: 1 }}
@@ -194,7 +194,6 @@ export default function CategoryWrapper(props) {
 
           <CardActions disableSpacing>
             <IconButton
-              expand={expanded}
               onClick={handleExpandClick}
               aria-expanded={expanded}
               aria-label="view all"

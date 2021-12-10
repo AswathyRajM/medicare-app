@@ -62,7 +62,7 @@ const StyledListItemIcon = styled(ListItemIcon)(`
   justify-content: flex-end;
 `);
 
-export default function CategoryWrapper(props) {
+export default function SideFilter(props) {
   const [expanded, setExpanded] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const [listOpen, setListOpen] = React.useState(false);
@@ -134,11 +134,11 @@ export default function CategoryWrapper(props) {
             {open ? <ExpandLess /> : <ExpandMore />}
           </ListItemButton>
           <Collapse in={open} timeout="auto" unmountOnExit>
-            {Category.slice(0, 4).map((item) => {
+            {Category.slice(0, 4).map((item, index) => {
               const labelId = `checkbox-list-label-${item.title}`;
 
               return (
-                <StyledList>
+                <StyledList key={index}>
                   <StyledListItemButton
                     sx={{ pl: 1 }}
                     onClick={handleToggle(item.title)}
@@ -175,10 +175,10 @@ export default function CategoryWrapper(props) {
                     timeout="auto"
                     unmountOnExit
                   >
-                    {item.subCategory.map((list) => {
+                    {item.subCategory.map((list, index) => {
                       const labelListId = `checkbox-list-label-${list}`;
                       return (
-                        <StyledList className={classes.list}>
+                        <StyledList className={classes.list} key={index}>
                           <StyledListListItemButton
                             sx={{ pl: "2.5rem" }}
                             onClick={handleItemToggle(list)}
@@ -221,7 +221,7 @@ export default function CategoryWrapper(props) {
                 const labelId = `checkbox-list-label-${item.title}`;
 
                 return (
-                  <StyledList>
+                  <StyledList key={index}>
                     <StyledListItemButton
                       sx={{ pl: 1 }}
                       onClick={handleToggle(item.title)}
@@ -258,10 +258,10 @@ export default function CategoryWrapper(props) {
                       timeout="auto"
                       unmountOnExit
                     >
-                      {item.subCategory.map((list) => {
+                      {item.subCategory.map((list, index) => {
                         const labelListId = `checkbox-list-label-${list}`;
                         return (
-                          <StyledList className={classes.list}>
+                          <StyledList className={classes.list} key={index}>
                             <StyledListListItemButton
                               sx={{ pl: "2.5rem" }}
                               onClick={handleItemToggle(list)}

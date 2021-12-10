@@ -42,6 +42,8 @@ const useStyles = makeStyles({
   image: {
     overflow: "hidden",
     height: "50%",
+    display: "flex",
+    justifyContent: "center",
   },
   offer: {
     backgroundColor: "#E44A21",
@@ -55,6 +57,10 @@ const useStyles = makeStyles({
     alignItems: "center",
     justifyContent: "center",
   },
+  img: {
+    objectFit: "contain",
+    height: "5rem",
+  },
 });
 
 const ColorButton = styled(Button)(({ theme }) => ({
@@ -66,21 +72,19 @@ const ColorButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-export default function OutlinedCard() {
+export default function ProductItem({ item }) {
   const classes = useStyles();
+  const title = item.title.split(" ").slice(0,3).join(" ");
+
   const product = {
-    id: 123,
-    title: "Purell Hand Sanitiser",
+    id: item.id,
+    title: title,
     description: "500ml liquid bottle",
-    price: 230,
-    rating: { rate: 3.9, count: 120 },
+    price: item.price,
+    rating: { rate: item.rating.rate, count: item.rating.count },
+    img: item.image,
   };
 
-  React.useEffect(() => {
-    fetch("https://api.github.com/users/hacktivist123/repos")
-      .then((response) => response.json())
-      .then((data) => console.log(data));
-  }, []);
   return (
     <Box>
       <Card
@@ -92,7 +96,7 @@ export default function OutlinedCard() {
             <label>50% Off</label>
           </div>
           <Box className={classes.image} pb={1}>
-            <img src="https://picsum.photos/350/100" alt="product" />
+            <img className={classes.img} src={product.img} alt="product" />
           </Box>
           <Typography className={classes.title} pb={1}>
             {product.title}

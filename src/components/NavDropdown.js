@@ -41,14 +41,14 @@ function NavDropdown() {
         {links.map((link, i) => {
           if (i === 0) {
             return (
-              <Box className={classes.nav} sx={{ color: "#E69A3A" }}>
+              <Box className={classes.nav} sx={{ color: "#E69A3A" }} key={i}>
                 <Typography>All Medicines</Typography>
                 <KeyboardArrowDownIcon />
               </Box>
             );
           }
           return (
-            <Box className={classes.nav}>
+            <Box className={classes.nav} key={i}>
               <Typography>{link}</Typography>
               <KeyboardArrowDownIcon />
             </Box>

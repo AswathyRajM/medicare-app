@@ -133,7 +133,12 @@ function Footer() {
                   color: "#242424",
                 }}
               />
-              <Typography className={classes.heading}  sx={{ fontSize: "1.2rem" }}>Free Shipping</Typography>
+              <Typography
+                className={classes.heading}
+                sx={{ fontSize: "1.2rem" }}
+              >
+                Free Shipping
+              </Typography>
               <Typography>
                 Esse cillum non culpa do deserunt quis nostrud enim eu
                 adipisicing. In deserunt minim minim deserunt aute dolore.
@@ -149,7 +154,12 @@ function Footer() {
                   color: "#242424",
                 }}
               />
-              <Typography className={classes.heading}  sx={{ fontSize: "1.2rem" }}>Easy Payments</Typography>
+              <Typography
+                className={classes.heading}
+                sx={{ fontSize: "1.2rem" }}
+              >
+                Easy Payments
+              </Typography>
               <Typography>
                 Esse cillum non culpa do deserunt quis nostrud enim eu
                 adipisicing. In deserunt minim minim deserunt aute dolore.

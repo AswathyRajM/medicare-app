@@ -1,10 +1,10 @@
 import React from "react";
-import ProductContainer from "./ProductsContainer";
+import ProductContainer from "../components/ProductsContainer";
 import { makeStyles } from "@mui/styles";
 import { Box } from "@mui/system";
-import SideFilter from "./SideFilter";
-import ProductForm from "./ProductForm";
-import CustomizedSlider from "./CustomizedSlider";
+import SideFilter from "../components/SideFilter";
+import ProductForm from "../components/ProductForm";
+import CustomizedSlider from "../components/CustomizedSlider";
 
 const useStyles = makeStyles({
   conatiner: {
@@ -26,7 +26,6 @@ const useStyles = makeStyles({
     borderBottom: "none",
     width: "max-content",
     margin: "1rem 0",
-    // marginRight: "1rem",
     width: "35%",
   },
   poductContainer: {

@@ -62,12 +62,16 @@ export default function ProductsGrid() {
       </Grid>
       <Box className={classes.pagination}>
         <Pagination
-          sx={{ position: "relative", width: "auto" }}
+          // variant="outlined"
+          sx={{ position: "relative", width: "auto", backgroundColor: "white" }}
           count={3}
           shape="rounded"
           hidePrevButton
           renderItem={(item) => (
             <PaginationItem
+              sx={{
+                backgroundColor: "white",
+              }}
               components={{ next: Next }}
               {...item}
               classes={{ selected: classes.selected }}

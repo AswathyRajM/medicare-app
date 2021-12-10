@@ -45,25 +45,25 @@ export default function ProductsGrid() {
     dispatch(fetchProducts());
 
     if (productData !== undefined)
-      if (productData.length > 0) {
-        let data = [...productData];
-        setProducts(data.slice(0, 16));
+      if (productData.length > 0 && products.length <= 0) {
+        let data1 = [...productData];
+        setProducts(data1.slice(0, 16));
       }
   }, [dispatch, productData]);
 
   const handleChange = (event, value) => {
-    console.log(value);
-    const startIndex = value * 16 - 16;
-    let endValue = value + 16;
+    if (value === 3) return;
+    let startIndex = value * 16 - 16;
+    let endValue = startIndex + 16;
     var endIndex = 0;
 
     if (productData !== undefined)
       if (productData.length > 0) {
-        endValue > 20 ? (endIndex = productData.length) : (endIndex = endValue);
-        const data = [...productData];
-        setProducts(data.slice(startIndex, endIndex));
+        endValue > 21 ? (endIndex = productData.length) : (endIndex = endValue);
+        let data = [...productData];
+        let p = data.slice(startIndex, endIndex);
+        setProducts([...p]);
       }
-    console.log(products);
   };
   return (
     <>

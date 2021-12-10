@@ -1,7 +1,6 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -93,7 +92,7 @@ export default function OutlinedCard() {
             <label>50% Off</label>
           </div>
           <Box className={classes.image} pb={1}>
-            <img src="https://picsum.photos/350/100" />
+            <img src="https://picsum.photos/350/100" alt="product" />
           </Box>
           <Typography className={classes.title} pb={1}>
             {product.title}

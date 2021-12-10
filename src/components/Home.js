@@ -24,7 +24,6 @@ const useStyles = makeStyles({
   categoryContainer: {
     height: "100%",
     borderBottom: "none",
-    width: "max-content",
     margin: "1rem 0",
     width: "35%",
   },

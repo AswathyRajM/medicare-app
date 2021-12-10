@@ -8,21 +8,16 @@ import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import Badge from "@mui/material/Badge";
 import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import MailIcon from "@mui/icons-material/Mail";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import {
   Button,
-  createTheme,
   Divider,
   FormControl,
   Select,
-  ThemeProvider,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { MenuItem } from "@mui/material";

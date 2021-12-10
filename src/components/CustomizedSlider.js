@@ -79,44 +79,8 @@ const AirbnbSlider = styled(Slider)(({ theme }) => ({
 
 export default function CustomizedSlider() {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
   const [open, setOpen] = React.useState(false);
-  const [listOpen, setListOpen] = React.useState(false);
-  const [checked, setChecked] = React.useState([]);
 
-  const handleToggle = (value) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    setChecked(newChecked);
-    setListOpen(!listOpen);
-  };
-
-  const handleItemToggle = (value) => () => {
-    if (listOpen) {
-      const currentIndex = checked.indexOf(value);
-      const newChecked = [...checked];
-
-      if (currentIndex === -1) {
-        newChecked.push(value);
-      } else {
-        newChecked.splice(currentIndex, 1);
-      }
-
-      setChecked(newChecked);
-    }
-  };
-
-  const handleExpandClick = () => {
-    let e = !expanded;
-    setExpanded(e);
-  };
   const handleClick = (value) => () => {
     setOpen(!open);
   };

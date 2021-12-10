@@ -45,12 +45,6 @@ const StyledListItemButton = styled(ListItemButton)(`
   padding-left: 0rem;
   `);
 
-const StyledListListItemButton = styled(ListItemButton)(`
-  padding:0;
-  height: 2.5em !important;
-  margin-bottom: 0rem;
-`);
-
 const StyledList = styled(List)(`
   padding:0;
   justify-content: center;
@@ -68,7 +62,6 @@ const StyledListItemIcon = styled(ListItemIcon)(`
 
 export default function CategoryWrapper(props) {
   const [expanded, setExpanded] = React.useState(false);
-  const [open, setOpen] = React.useState(false);
   const [listOpen, setListOpen] = React.useState(false);
   const [checked, setChecked] = React.useState([]);
   const Category = [...props.Lists];
@@ -89,27 +82,9 @@ export default function CategoryWrapper(props) {
     setListOpen(!listOpen);
   };
 
-  const handleItemToggle = (value) => () => {
-    if (listOpen) {
-      const currentIndex = checked.indexOf(value);
-      const newChecked = [...checked];
-
-      if (currentIndex === -1) {
-        newChecked.push(value);
-      } else {
-        newChecked.splice(currentIndex, 1);
-      }
-
-      setChecked(newChecked);
-    }
-  };
-
   const handleExpandClick = () => {
     let e = !expanded;
     setExpanded(e);
-  };
-  const handleClick = (value) => () => {
-    setOpen(!open);
   };
 
   return (

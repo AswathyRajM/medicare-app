@@ -13,12 +13,14 @@ const useStyles = makeStyles({
   },
   headingText: {
     textTransform: "uppercase",
-    fontWeight: "500",
+    fontWeight: 600,
     padding: "1rem 0",
     fontSize: "1.5rem ",
   },
   heading: {
     height: "auto",
+    display: "flex",
+    alignItems: "center",
   },
   banner: {
     width: "100%",
@@ -35,14 +37,14 @@ const useStyles = makeStyles({
     flexDirection: "column",
   },
   bannerText: {
-    fontWeight: "700",
+    fontWeight: 700,
     zIndex: 999,
     fontSize: "2rem",
     paddingBottom: "1rem",
   },
   bannerSubText: {
     color: "#797979",
-    fontWeight: "500",
+    fontWeight: 400,
     fontSize: "1.2rem",
   },
 });
@@ -55,20 +57,43 @@ function Products() {
         <HomeOutlinedIcon />
         <Typography pl={3}>Covid</Typography>
       </Box>
-      <Box className={classes.heading}>
+      <Box
+        className={classes.heading}
+        sx={{
+          height: "4rem",
+        }}
+      >
         <Typography variant="h" className={classes.headingText}>
           Covid test & prevention
         </Typography>
       </Box>
       <Box className={classes.banner}>
         <Box className={classes.textConatiner}>
-          <Typography className={classes.bannerText} variant="h">
+          <Typography
+            className={classes.bannerText}
+            variant="h"
+            sx={{
+              letterSpacing: ".1rem",
+            }}
+          >
             Save Flat 50% extra on
           </Typography>
-          <Typography className={classes.bannerText} variant="h">
+          <Typography
+            className={classes.bannerText}
+            variant="h"
+            sx={{
+              letterSpacing: ".1rem",
+            }}
+          >
             Medicines and enjoy free delivery
           </Typography>
-          <Typography className={classes.bannerSubText} variant="h">
+          <Typography
+            className={classes.bannerSubText}
+            variant="h"
+            sx={{
+              letterSpacing: ".2rem",
+            }}
+          >
             For the whole month of December
           </Typography>
         </Box>

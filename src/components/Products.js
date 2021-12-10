@@ -1,35 +1,31 @@
-import React from "react";
-import { Container, Typography } from "@mui/material";
-import { Box } from "@mui/system";
-import ChevronLeftOutlinedIcon from "@mui/icons-material/ChevronLeftOutlined";
-import ChevronRightOutlinedIcon from "@mui/icons-material/ChevronRightOutlined";
-import { makeStyles } from "@mui/styles";
+import * as React from "react";
+import { experimentalStyled as styled } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
+import Grid from "@mui/material/Grid";
+import ProductItem from "./ProductItem";
 
-const useStyles = makeStyles({
-  iconConatiner: {
-    display: "flex",
-    flexDirection: "row",
-  },
-  flexContainer: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-});
+const Item = styled(Paper)(({ theme }) => ({
+  ...theme.typography.body2,
+  padding: theme.spacing(2),
+  textAlign: "center",
+  color: theme.palette.text.secondary,
+}));
 
-function Products() {
-  const classes = useStyles();
+export default function ResponsiveGrid() {
   return (
-    <Container className={classes.flexContainer}>
-      <Box>
-        <Typography>Shop by Category</Typography>
-        <Box className={classes.iconConatiner}>
-          <ChevronLeftOutlinedIcon />
-          <ChevronRightOutlinedIcon />
-        </Box>
-      </Box>
-    </Container>
+    <Box sx={{ flexGrow: 1 }}>
+      <Grid
+        container
+        spacing={{ xs: 2, md: 3 }}
+        columns={{ xs: 4, sm: 8, md: 16 }}
+      >
+        {Array.from(Array(16)).map((_, index) => (
+          <Grid item xs={2} sm={4} md={4} key={index}>
+            <ProductItem />
+          </Grid>
+        ))}
+      </Grid>
+    </Box>
   );
 }
-
-export default Products;

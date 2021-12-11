@@ -1,5 +1,9 @@
 import axios from "axios";
-import { FETCH_PRODUCTS, GET_CATEGORIES } from "../Constants/products";
+import {
+  FETCH_PRODUCTS,
+  GET_CATEGORIES,
+  GET_BRANDS,
+} from "../Constants/products";
 
 const apiURL = "http://fakestoreapi.com/products";
 
@@ -21,6 +25,17 @@ export const fetchCategories = () => async (dispatch) => {
     dispatch({
       type: GET_CATEGORIES,
       payload: categories.data,
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const getBrands = () => async (dispatch) => {
+  try {
+    dispatch({
+      type: GET_BRANDS,
+      payload: "",
     });
   } catch (error) {
     console.log(error.message);

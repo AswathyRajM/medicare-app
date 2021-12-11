@@ -1,17 +1,31 @@
-import { FETCH_PRODUCTS, GET_CATEGORIES } from "../Constants/products";
+import {
+  FETCH_PRODUCTS,
+  GET_CATEGORIES,
+  GET_BRANDS,
+} from "../Constants/products";
 const initialState = {
   products: [],
   categories: [],
+  brands: [],
 };
 
 function rootReducer(state = initialState, action) {
-  let actionType = action.type;
-
-  switch (actionType) {
+  switch (action.type) {
     case GET_CATEGORIES: {
       return {
         ...state,
         categories: action.payload,
+      };
+    }
+
+    case GET_BRANDS: {
+      const brandArr = state.products.map((item) => {
+        return item.brand;
+      });
+      console.log(brandArr);
+      return {
+        ...state,
+        brands: brandArr,
       };
     }
 

@@ -83,8 +83,8 @@ export default function ProductForm(props) {
   const [expanded, setExpanded] = React.useState(false);
   const [listOpen, setListOpen] = React.useState(false);
   const [checked, setChecked] = React.useState([]);
-  const Category = [...props.Lists];
-
+  const Brands = props.brands;
+  console.log(Brands);
   const classes = useStyles();
 
   const handleToggle = (value) => () => {
@@ -143,20 +143,20 @@ export default function ProductForm(props) {
               }}
             />
           </Box>
-          {Category.slice(0, 3).map((item, index) => {
-            const labelId = `checkbox-list-label-${item.title}`;
+          {Brands.slice(0, 3).map((item, index) => {
+            const labelId = `checkbox-list-label-${item}`;
 
             return (
               <StyledList key={index}>
                 <StyledListItemButton
                   sx={{ pl: 4 }}
-                  onClick={handleToggle(item.title)}
+                  onClick={handleToggle(item)}
                 >
                   <StyledListItemIcon>
                     <Checkbox
                       size="large"
                       edge="start"
-                      checked={checked.indexOf(item.title) !== -1}
+                      checked={checked.indexOf(item) !== -1}
                       tabIndex={-1}
                       disableRipple
                       inputProps={{ "aria-labelledby": labelId }}
@@ -174,15 +174,15 @@ export default function ProductForm(props) {
                   <ListItemText
                     style={{ textTransform: "capitalize" }}
                     id={labelId}
-                    primary={`${item.title}`}
+                    primary={`${item}`}
                   />
                 </StyledListItemButton>
               </StyledList>
             );
           })}
           <Collapse in={expanded} timeout="auto" unmountOnExit>
-            {Category.slice(3, Category.length).map((item, index) => {
-              const labelId = `checkbox-list-label-${item.title}`;
+            {Brands.slice(3, Brands.length).map((item, index) => {
+              const labelId = `checkbox-list-label-${item}`;
 
               return (
                 <StyledList key={index}>
@@ -194,7 +194,7 @@ export default function ProductForm(props) {
                       <Checkbox
                         size="large"
                         edge="start"
-                        checked={checked.indexOf(item.title) !== -1}
+                        checked={checked.indexOf(item) !== -1}
                         tabIndex={-1}
                         disableRipple
                         inputProps={{ "aria-labelledby": labelId }}
@@ -212,7 +212,7 @@ export default function ProductForm(props) {
                     <ListItemText
                       style={{ textTransform: "capitalize" }}
                       id={labelId}
-                      primary={`${item.title}`}
+                      primary={`${item}`}
                     />
                   </StyledListItemButton>
                 </StyledList>

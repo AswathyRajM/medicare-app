@@ -49,28 +49,6 @@ const useStyles = makeStyles({
 function AllProducts() {
   const classes = useStyles();
 
-  const Brands = [
-    {
-      title: "Fruits",
-      subCategory: ["Orange", "Apple", "Mango"],
-    },
-    {
-      title: "Fruits1",
-      subCategory: ["Orange1", "Apple1", "Mango1"],
-    },
-    {
-      title: "Fruits2",
-      subCategory: ["Orange2", "Apple2", "Mango2"],
-    },
-    {
-      title: "Fruits3",
-      subCategory: ["Orange3", "Apple3", "Mango3"],
-    },
-    {
-      title: "Fruits4",
-      subCategory: ["Orange4", "Apple4", "Mango4"],
-    },
-  ];
   const dispatch = useDispatch();
   const categoriesData = useSelector((state) => state.categories);
   const [categories, setCategories] = useState([]);
@@ -88,7 +66,7 @@ function AllProducts() {
             <SideFilter List={categoriesData} />
           </Box>
           <Box className={classes.sidemenu}>
-            <ProductForm Lists={Brands} />
+            <ProductForm Lists={categoriesData} />
           </Box>
           <Box className={classes.sidemenu}>
             <CustomizedSlider />

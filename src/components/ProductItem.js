@@ -82,10 +82,11 @@ export default function ProductItem({ item }) {
   const product = {
     id: item.id,
     title: title,
-    description: "500ml liquid bottle",
+    description: item.description,
     price: item.price,
     rating: { rate: item.rating.rate, count: item.rating.count },
     img: item.image,
+    brand: item.brand,
   };
 
   React.useEffect(() => {
@@ -115,7 +116,19 @@ export default function ProductItem({ item }) {
             </Typography>
             <Typography
               className={classes.text}
-              sx={{ fontSize: ".8rem" }}
+              sx={{ fontSize: ".8rem", textTransform: "uppercase", pb: 1 }}
+            >
+              {product.brand}
+            </Typography>
+            <Typography
+              className={classes.text}
+              sx={{
+                fontSize: ".8rem",
+                maxWidth: "15rem",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}
               pb={1}
             >
               {product.description}

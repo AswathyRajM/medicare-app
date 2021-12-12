@@ -4,7 +4,7 @@ import ProductContainer from "./ProductsContainer";
 import { makeStyles } from "@mui/styles";
 import { Box } from "@mui/system";
 import SideFilter from "./SideFilter";
-import ProductForm from "./ProductForm";
+import Brands from "./Brands";
 import CustomizedSlider from "./CustomizedSlider";
 import { fetchCategories, getBrands } from "../redux/Actions/products";
 
@@ -48,22 +48,21 @@ const useStyles = makeStyles({
 
 function AllProducts() {
   const classes = useStyles();
-
   const dispatch = useDispatch();
   const categoriesData = useSelector((state) => state.categories);
   const brandsData = useSelector((state) => state.brands);
   const [categories, setCategories] = useState([]);
   const [brands, setBrands] = useState([]);
+  let count = 0;
+
   useEffect(() => {
-    dispatch(fetchCategories());
-    dispatch(getBrands());
-    if (categoriesData !== undefined) {
-      setCategories(categoriesData);
-    }
-    if (brandsData !== undefined) {
-      setBrands(brandsData);
-    }
-  }, [dispatch]);
+    if (categoriesData.length < 1) dispatch(fetchCategories());
+    else setCategories(categoriesData);
+
+    if (brandsData.length < 1) dispatch(getBrands());
+    else setBrands(brandsData);
+  }, [dispatch, categoriesData, brandsData]);
+
   return (
     <Box className={classes.conatiner}>
       <Box className={classes.boxflex}>
@@ -72,7 +71,7 @@ function AllProducts() {
             <SideFilter List={categories} />
           </Box>
           <Box className={classes.sidemenu}>
-            <ProductForm brands={brands} />
+            <Brands brands={brands} />
           </Box>
           <Box className={classes.sidemenu}>
             <CustomizedSlider />

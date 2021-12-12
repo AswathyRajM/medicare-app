@@ -6,7 +6,7 @@ import {
 const initialState = {
   products: [],
   categories: [],
-  brands: [],
+  brands: ["Wrangler", "Levi’s", "Provogue", "Acer", "Sandisk", "MI"],
 };
 
 function rootReducer(state = initialState, action) {
@@ -19,13 +19,8 @@ function rootReducer(state = initialState, action) {
     }
 
     case GET_BRANDS: {
-      const brandArr = state.products.map((item) => {
-        return item.brand;
-      });
-      console.log(brandArr);
       return {
         ...state,
-        brands: brandArr,
       };
     }
 

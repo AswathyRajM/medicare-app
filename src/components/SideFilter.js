@@ -127,7 +127,7 @@ export default function SideFilter(props) {
               disableTypography
               primary={
                 <StyledTypography className={classes.nodeText}>
-                  {props.title}
+                  Category
                 </StyledTypography>
               }
             />
@@ -140,7 +140,7 @@ export default function SideFilter(props) {
               return (
                 <StyledList key={index}>
                   <StyledListItemButton
-                    sx={{ pl: 1 }}
+                    sx={{ pl: 4 }}
                     onClick={handleToggle(item)}
                   >
                     <StyledListItemIcon>
@@ -154,7 +154,7 @@ export default function SideFilter(props) {
                         sx={{
                           color: "black",
                           "&.Mui-checked": {
-                            color: "black",
+                            color: "#E69A3A",
                           },
                         }}
                         style={{
@@ -162,7 +162,11 @@ export default function SideFilter(props) {
                         }}
                       />
                     </StyledListItemIcon>
-                    <ListItemText id={labelId} primary={`${item}`} />
+                    <ListItemText
+                      style={{ textTransform: "capitalize" }}
+                      id={labelId}
+                      primary={`${item}`}
+                    />
                   </StyledListItemButton>
                 </StyledList>
               );
@@ -174,7 +178,7 @@ export default function SideFilter(props) {
                 return (
                   <StyledList key={index}>
                     <StyledListItemButton
-                      sx={{ pl: 1 }}
+                      sx={{ pl: 4 }}
                       onClick={handleToggle(item)}
                     >
                       <StyledListItemIcon>
@@ -188,7 +192,7 @@ export default function SideFilter(props) {
                           sx={{
                             color: "black",
                             "&.Mui-checked": {
-                              color: "black",
+                              color: "#E69A3A",
                             },
                           }}
                           style={{
@@ -196,7 +200,11 @@ export default function SideFilter(props) {
                           }}
                         />
                       </StyledListItemIcon>
-                      <ListItemText id={labelId} primary={`${item}`} />
+                      <ListItemText
+                        style={{ textTransform: "capitalize" }}
+                        id={labelId}
+                        primary={`${item}`}
+                      />
                     </StyledListItemButton>
                   </StyledList>
                 );
@@ -210,7 +218,7 @@ export default function SideFilter(props) {
                 aria-expanded={expanded}
                 aria-label="view all"
               >
-                <Typography sx={{ color: "#E69A3A" }}>
+                <Typography sx={{ px: 1 }}>
                   {expanded ? "View Less" : "View All"}
                 </Typography>
               </IconButton>

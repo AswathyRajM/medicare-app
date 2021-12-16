@@ -9,7 +9,7 @@ import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { makeStyles } from "@mui/styles";
+import { makeStyles, withStyles } from "@mui/styles";
 import { Box, styled } from "@mui/system";
 import Checkbox from "@mui/material/Checkbox";
 import { InputAdornment, TextField } from "@mui/material";
@@ -53,12 +53,31 @@ const StyledList = styled(List)(`
 
 const StyledListItemIcon = styled(ListItemIcon)(`
   width: min-conent !important;
-  padding:0;
+  padding: 0rem;
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
   marign-right: 1rem;
 `);
+
+const StyledTextField = withStyles({
+  root: {
+    "& label.Mui-focused": {
+      color: "#E69A3A",
+    },
+    "& .MuiInput-underline:after": {
+      borderBottomColor: "#E69A3A",
+    },
+    "& .MuiOutlinedInput-root": {
+      "&:hover fieldset": {
+        borderColor: "#E69A3A",
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "#E69A3A",
+      },
+    },
+  },
+})(TextField);
 
 export default function ProductForm(props) {
   const [expanded, setExpanded] = React.useState(false);
@@ -110,7 +129,7 @@ export default function ProductForm(props) {
             }
           />
           <Box sx={{ px: 3.25 }}>
-            <TextField
+            <StyledTextField
               id="Search-product-orm"
               placeholder="Search product form"
               fullWidth
@@ -123,13 +142,13 @@ export default function ProductForm(props) {
               }}
             />
           </Box>
-          {Category.slice(0, 4).map((item, index) => {
+          {Category.slice(0, 3).map((item, index) => {
             const labelId = `checkbox-list-label-${item.title}`;
 
             return (
               <StyledList key={index}>
                 <StyledListItemButton
-                  sx={{ pl: 1 }}
+                  sx={{ pl: 4 }}
                   onClick={handleToggle(item.title)}
                 >
                   <StyledListItemIcon>
@@ -143,7 +162,7 @@ export default function ProductForm(props) {
                       sx={{
                         color: "black",
                         "&.Mui-checked": {
-                          color: "black",
+                          color: "#E69A3A",
                         },
                       }}
                       style={{
@@ -151,20 +170,24 @@ export default function ProductForm(props) {
                       }}
                     />
                   </StyledListItemIcon>
-                  <ListItemText id={labelId} primary={`${item.title}`} />
+                  <ListItemText
+                    style={{ textTransform: "capitalize" }}
+                    id={labelId}
+                    primary={`${item.title}`}
+                  />
                 </StyledListItemButton>
               </StyledList>
             );
           })}
           <Collapse in={expanded} timeout="auto" unmountOnExit>
-            {Category.slice(4, Category.length).map((item, index) => {
+            {Category.slice(3, Category.length).map((item, index) => {
               const labelId = `checkbox-list-label-${item.title}`;
 
               return (
                 <StyledList key={index}>
                   <StyledListItemButton
-                    onClick={handleToggle(item.title)}
-                    sx={{ pl: 1 }}
+                    sx={{ pl: 4 }}
+                    onClick={handleToggle(item)}
                   >
                     <StyledListItemIcon>
                       <Checkbox
@@ -177,7 +200,7 @@ export default function ProductForm(props) {
                         sx={{
                           color: "black",
                           "&.Mui-checked": {
-                            color: "black",
+                            color: "#E69A3A",
                           },
                         }}
                         style={{
@@ -185,7 +208,11 @@ export default function ProductForm(props) {
                         }}
                       />
                     </StyledListItemIcon>
-                    <ListItemText id={labelId} primary={`${item.title}`} />
+                    <ListItemText
+                      style={{ textTransform: "capitalize" }}
+                      id={labelId}
+                      primary={`${item.title}`}
+                    />
                   </StyledListItemButton>
                 </StyledList>
               );
@@ -198,7 +225,7 @@ export default function ProductForm(props) {
               aria-expanded={expanded}
               aria-label="view all"
             >
-              <Typography sx={{ color: "#E69A3A" }}>
+              <Typography sx={{ px: 1 }}>
                 {expanded ? "View Less" : "View All"}
               </Typography>
             </IconButton>

@@ -48,32 +48,6 @@ const useStyles = makeStyles({
 
 function AllProducts() {
   const classes = useStyles();
-  const Category = [
-    {
-      title: "Masks",
-      subCategory: ["abc", "cdf"],
-    },
-    {
-      title: "Masks1",
-      subCategory: ["abc1", "cdf1"],
-    },
-    {
-      title: "Masks2",
-      subCategory: ["abc2", "cdf2"],
-    },
-    {
-      title: "Masks3",
-      subCategory: ["abc3", "cdf3"],
-    },
-    {
-      title: "Masks4",
-      subCategory: ["abc4", "cdf4"],
-    },
-    {
-      title: "Masks5",
-      subCategory: ["abc5", "cdf5"],
-    },
-  ];
 
   const Brands = [
     {
@@ -111,10 +85,7 @@ function AllProducts() {
       <Box className={classes.boxflex}>
         <Box className={classes.categoryContainer}>
           <Box className={classes.sidemenu}>
-            <SideFilter title={"Category"} List={categoriesData} />
-          </Box>
-          <Box className={classes.sidemenu}>
-            <SideFilter title={"Brands"} List={categoriesData} />
+            <SideFilter List={categoriesData} />
           </Box>
           <Box className={classes.sidemenu}>
             <ProductForm Lists={Brands} />

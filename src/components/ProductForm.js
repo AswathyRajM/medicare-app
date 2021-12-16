@@ -41,7 +41,7 @@ const StyledCardContent = styled(CardContent)(`
 `);
 
 const StyledListItemButton = styled(ListItemButton)(`
-  padding:.2rem 1rem;
+  padding:.2rem 0;
   padding-left: 0rem;
   `);
 
@@ -132,6 +132,7 @@ export default function ProductForm(props) {
             <StyledTextField
               id="Search-product-orm"
               placeholder="Search product form"
+              sx={{ py: ".5rem" }}
               fullWidth
               InputProps={{
                 startAdornment: (

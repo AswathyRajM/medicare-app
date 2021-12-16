@@ -39,13 +39,7 @@ const StyledCardContent = styled(CardContent)(`
 `);
 
 const StyledListItemButton = styled(ListItemButton)(`
-  padding:.2rem 1rem;
-`);
-
-const StyledListListItemButton = styled(ListItemButton)(`
-  padding:0;
-  height: 2.5em !important;
-  margin-bottom: 0rem;
+  padding: .2rem 0;
 `);
 
 const StyledList = styled(List)(`
@@ -82,21 +76,6 @@ export default function SideFilter(props) {
 
     setChecked(newChecked);
     setListOpen(!listOpen);
-  };
-
-  const handleItemToggle = (value) => () => {
-    if (listOpen) {
-      const currentIndex = checked.indexOf(value);
-      const newChecked = [...checked];
-
-      if (currentIndex === -1) {
-        newChecked.push(value);
-      } else {
-        newChecked.splice(currentIndex, 1);
-      }
-
-      setChecked(newChecked);
-    }
   };
 
   const handleExpandClick = () => {

@@ -47,8 +47,8 @@ const useStyles = makeStyles({
   },
 });
 
-const AirbnbSlider = styled(Slider)(({ theme }) => ({
-  color: "#000",
+const StyledSlider = styled(Slider)(({ theme }) => ({
+  color: "#E69A3A",
   height: 3,
   padding: "13px 0",
   "& .MuiSlider-thumb": {
@@ -84,6 +84,10 @@ export default function CustomizedSlider() {
   const handleClick = (value) => () => {
     setOpen(!open);
   };
+
+  const handleSliderChange = (event, newValue) => {
+    console.log(newValue);
+  };
   return (
     <Card sx={{ width: "100%", padding: 0 }}>
       <StyledCardContent>
@@ -114,13 +118,15 @@ export default function CustomizedSlider() {
             <Box sx={{ p: 3 }}>
               <Box className={classes.textcontainer}>
                 <Typography className={classes.texts}>₹0</Typography>
-                <Typography className={classes.texts}>₹10000</Typography>
+                <Typography className={classes.texts}>₹1000</Typography>
               </Box>
-              <AirbnbSlider
-                getAriaLabel={(index) =>
-                  index === 0 ? "Minimum price" : "Maximum price"
-                }
-                defaultValue={[0, 10000]}
+              <StyledSlider
+                defaultValue={1000}
+                // value={value}
+                max={1000}
+                aria-label="Default"
+                valueLabelDisplay="auto"
+                onChange={handleSliderChange}
               />
             </Box>
           </Collapse>

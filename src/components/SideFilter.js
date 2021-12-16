@@ -68,7 +68,6 @@ export default function SideFilter(props) {
   const [listOpen, setListOpen] = React.useState(false);
   const [checked, setChecked] = React.useState([]);
   const Category = props.List;
-  console.log(props.List);
   const classes = useStyles();
 
   const handleToggle = (value) => () => {

@@ -1,4 +1,6 @@
 import React from "react";
+import { NavLink, Outlet } from "react-router-dom";
+
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Box } from "@mui/system";
 import { Typography } from "@mui/material";
@@ -21,17 +23,40 @@ const useStyles = makeStyles({
     justifyContent: "space-between",
     padding: "1rem",
     cursor: "pointer",
+    transition: "color .2s ease",
+    "&:hover": {
+      color: "#E69A3A",
+    },
   },
 });
 
 function NavDropdown() {
   const classes = useStyles();
   const links = [
-    "Women's Cloths",
-    "Men's Cloths",
-    "Electronics",
-    "Jewellery",
-    "Bags",
+    {
+      title: "All Products",
+      nav: "all-products",
+    },
+    {
+      title: "Women's Cloths",
+      nav: "womens-cloths",
+    },
+    {
+      title: "Men's Cloths",
+      nav: "mens-cloths",
+    },
+    {
+      title: "Electronics",
+      nav: "electronics",
+    },
+    {
+      title: "Jewellery",
+      nav: "jewellery",
+    },
+    {
+      title: "Bags",
+      nav: "bags",
+    },
   ];
   return (
     <>
@@ -40,21 +65,24 @@ function NavDropdown() {
         sx={{ mx: 6.5, display: { md: "flex", xs: "none" } }}
       >
         {links.map((link, i) => {
-          if (i === 0) {
-            return (
-              <Box className={classes.nav} sx={{ color: "#E69A3A" }} key={i}>
-                <Typography>All Products</Typography>
-                <KeyboardArrowDownIcon />
-              </Box>
-            );
-          }
           return (
             <Box className={classes.nav} key={i}>
-              <Typography>{link}</Typography>
-              <KeyboardArrowDownIcon />
+              <NavLink
+                style={({ isActive }) => {
+                  return {
+                    color: isActive ? "#E69A3A" : "inherit",
+                    textDecoration: "none",
+                  };
+                }}
+                to={`/${link.nav}`}
+              >
+                <Typography>{link.title}</Typography>
+                {/* <KeyboardArrowDownIcon /> */}
+              </NavLink>
             </Box>
           );
         })}
+        <Outlet />
       </Box>
     </>
   );

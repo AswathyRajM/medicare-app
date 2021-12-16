@@ -43,11 +43,11 @@ export default function ProductsGrid() {
 
   React.useEffect(() => {
     dispatch(fetchProducts());
-
     if (productData !== undefined)
       if (productData.length > 0 && products.length <= 0) {
         let data1 = [...productData];
         setProducts(data1.slice(0, 16));
+    
       }
   }, [dispatch, productData]);
 

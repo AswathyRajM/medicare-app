@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     height: "auto",
     display: "flex",
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "flex-end",
     borderBottom: "1px solid #cfcfcf",
     paddingBottom: "1rem",
     paddingTop: "1rem",
@@ -27,22 +27,23 @@ const useStyles = makeStyles({
 function NavDropdown() {
   const classes = useStyles();
   const links = [
-    "COVID Test & Prevention",
-    "Healthcare Products",
-    "Featured",
-    "Fitness & Suppliments",
-    "Diabetes",
-    "Personal Care",
-    "Special Offers",
+    "Women's Cloths",
+    "Men's Cloths",
+    "Electronics",
+    "Jewellery",
+    "Bags",
   ];
   return (
     <>
-      <Box className={classes.boxContainer} sx={{ mx: 6.5 }}>
+      <Box
+        className={classes.boxContainer}
+        sx={{ mx: 6.5, display: { md: "flex", xs: "none" } }}
+      >
         {links.map((link, i) => {
           if (i === 0) {
             return (
               <Box className={classes.nav} sx={{ color: "#E69A3A" }} key={i}>
-                <Typography>All Medicines</Typography>
+                <Typography>All Products</Typography>
                 <KeyboardArrowDownIcon />
               </Box>
             );

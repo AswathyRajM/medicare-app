@@ -11,14 +11,10 @@ import Menu from "@mui/material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MoreIcon from "@mui/icons-material/MoreVert";
+import MenuIcon from "@mui/icons-material/Menu";
 
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
-import {
-  Button,
-  Divider,
-  FormControl,
-  Select,
-} from "@mui/material";
+import { Button, Divider, FormControl, Select } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { MenuItem } from "@mui/material";
 import PersonOutlineSharpIcon from "@mui/icons-material/PersonOutlineSharp";
@@ -96,6 +92,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function PrimarySearchAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -117,6 +114,10 @@ export default function PrimarySearchAppBar() {
 
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
+  };
+
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
   };
 
   const menuId = "primary-search-account-menu";
@@ -255,14 +256,26 @@ export default function PrimarySearchAppBar() {
           backgroundColor: "#E69A3A",
         }}
       >
-        <Toolbar sx={{ mx: 4 }}>
+        <Toolbar sx={{ mx: 7 }} disableGutters>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+            >
+              <MenuIcon />
+            </IconButton>
+          </Box>
           <Typography
             variant="h4"
             noWrap
             component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
+            sx={{ display: { sm: "block" } }}
           >
-            Medicare
+            KartHut
           </Typography>
           <Search>
             <LocationIconWrappwer>

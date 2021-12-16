@@ -1,6 +1,7 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
+import Grow from "@mui/material/Grow";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -73,8 +74,10 @@ const ColorButton = styled(Button)(({ theme }) => ({
 }));
 
 export default function ProductItem({ item }) {
+  const [checked, setChecked] = React.useState(false);
+
   const classes = useStyles();
-  const title = item.title.split(" ").slice(0,3).join(" ");
+  const title = item.title.split(" ").slice(0, 3).join(" ");
 
   const product = {
     id: item.id,
@@ -85,73 +88,83 @@ export default function ProductItem({ item }) {
     img: item.image,
   };
 
+  React.useEffect(() => {
+    setChecked(true);
+  }, []);
+
   return (
     <Box>
-      <Card
-        variant="outlined"
-        sx={{ borderRadius: "10px", position: "relative" }}
+      <Grow
+        in={checked}
+        style={{ transformOrigin: "0 0 0" }}
+        {...(checked ? { timeout: product.id * 150 } : {})}
       >
-        <CardContent>
-          <div className={classes.offer}>
-            <label>50% Off</label>
-          </div>
-          <Box className={classes.image} pb={1}>
-            <img className={classes.img} src={product.img} alt="product" />
-          </Box>
-          <Typography className={classes.title} pb={1}>
-            {product.title}
-          </Typography>
-          <Typography
-            className={classes.text}
-            sx={{ fontSize: ".8rem" }}
-            pb={1}
-          >
-            {product.description}
-          </Typography>
-          <Box className={classes.flexbox} pb={1}>
-            <Rating
-              name="read-only"
-              value={product.rating.rate}
-              readOnly
-              size="small"
-            />
-            <div className={classes.rating}> {product.rating.rate}</div>
-            <Typography className={classes.text} sx={{ fontSize: ".8rem" }}>
-              {product.rating.count} Ratigs
-            </Typography>
-          </Box>
-          <Box className={classes.offerBox} pb={1}>
-            <Typography className={classes.text} sx={{ fontSize: ".8rem" }}>
-              MRP
-              <span
-                style={{ textDecoration: "line-through", paddingLeft: "5px" }}
-              >
-                ₹{product.price}
-              </span>
+        <Card
+          variant="outlined"
+          sx={{ borderRadius: "10px", position: "relative" }}
+        >
+          <CardContent>
+            <div className={classes.offer}>
+              <label>50% Off</label>
+            </div>
+            <Box className={classes.image} pb={1}>
+              <img className={classes.img} src={product.img} alt="product" />
+            </Box>
+            <Typography className={classes.title} pb={1}>
+              {product.title}
             </Typography>
             <Typography
-              sx={{
-                fontSize: ".8rem",
-                color: "#5CA239",
-                pl: 1,
-              }}
+              className={classes.text}
+              sx={{ fontSize: ".8rem" }}
+              pb={1}
             >
-              26% off
+              {product.description}
             </Typography>
-          </Box>
-          <Box className={classes.flexbox}>
-            <Typography className={classes.price} variant="h">
-              ₹{product.price}
-            </Typography>
-            <ColorButton
-              variant="contained"
-              startIcon={<ShoppingCartOutlinedIcon />}
-            >
-              Add
-            </ColorButton>
-          </Box>
-        </CardContent>
-      </Card>
+            <Box className={classes.flexbox} pb={1}>
+              <Rating
+                name="read-only"
+                value={product.rating.rate}
+                readOnly
+                size="small"
+              />
+              <div className={classes.rating}> {product.rating.rate}</div>
+              <Typography className={classes.text} sx={{ fontSize: ".8rem" }}>
+                {product.rating.count} Ratigs
+              </Typography>
+            </Box>
+            <Box className={classes.offerBox} pb={1}>
+              <Typography className={classes.text} sx={{ fontSize: ".8rem" }}>
+                MRP
+                <span
+                  style={{ textDecoration: "line-through", paddingLeft: "5px" }}
+                >
+                  ₹{product.price}
+                </span>
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: ".8rem",
+                  color: "#5CA239",
+                  pl: 1,
+                }}
+              >
+                26% off
+              </Typography>
+            </Box>
+            <Box className={classes.flexbox}>
+              <Typography className={classes.price} variant="h">
+                ₹{product.price}
+              </Typography>
+              <ColorButton
+                variant="contained"
+                startIcon={<ShoppingCartOutlinedIcon />}
+              >
+                Add
+              </ColorButton>
+            </Box>
+          </CardContent>
+        </Card>
+      </Grow>
     </Box>
   );
 }

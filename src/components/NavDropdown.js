@@ -1,10 +1,35 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
-
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Box } from "@mui/system";
 import { Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+
+const links = [
+  {
+    title: "All Products",
+    nav: "all-products",
+  },
+  {
+    title: "Women's Cloths",
+    nav: "womens-cloths",
+  },
+  {
+    title: "Men's Cloths",
+    nav: "mens-cloths",
+  },
+  {
+    title: "Electronics",
+    nav: "electronics",
+  },
+  {
+    title: "Jewellery",
+    nav: "jewellery",
+  },
+  {
+    title: "Bags",
+    nav: "bags",
+  },
+];
 
 const useStyles = makeStyles({
   boxContainer: {
@@ -32,32 +57,6 @@ const useStyles = makeStyles({
 
 function NavDropdown() {
   const classes = useStyles();
-  const links = [
-    {
-      title: "All Products",
-      nav: "all-products",
-    },
-    {
-      title: "Women's Cloths",
-      nav: "womens-cloths",
-    },
-    {
-      title: "Men's Cloths",
-      nav: "mens-cloths",
-    },
-    {
-      title: "Electronics",
-      nav: "electronics",
-    },
-    {
-      title: "Jewellery",
-      nav: "jewellery",
-    },
-    {
-      title: "Bags",
-      nav: "bags",
-    },
-  ];
   return (
     <>
       <Box
@@ -77,7 +76,6 @@ function NavDropdown() {
                 to={`/${link.nav}`}
               >
                 <Typography>{link.title}</Typography>
-                {/* <KeyboardArrowDownIcon /> */}
               </NavLink>
             </Box>
           );

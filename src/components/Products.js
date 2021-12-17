@@ -1,6 +1,7 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
+import CircularProgress from "@mui/material/CircularProgress";
 import ProductItem from "./ProductItem";
 import Pagination from "@mui/material/Pagination";
 import { Typography } from "@mui/material";
@@ -47,7 +48,6 @@ export default function ProductsGrid() {
       if (productData.length > 0 && products.length <= 0) {
         let data1 = [...productData];
         setProducts(data1.slice(0, 16));
-    
       }
   }, [dispatch, productData]);
 
@@ -67,48 +67,58 @@ export default function ProductsGrid() {
   };
   return (
     <>
-      {products.length > 0 ? (
-        <Box sx={{ flexGrow: 1 }}>
-          <Grid
-            container
-            spacing={{ xs: 2, md: 3 }}
-            columns={{ xs: 4, sm: 8, md: 16 }}
+      <Box sx={{ flexGrow: 1, minHeight: "40vh" }}>
+        {products.length > 0 ? (
+          <>
+            <Grid
+              container
+              spacing={{ xs: 2, md: 3 }}
+              columns={{ xs: 4, sm: 8, md: 16 }}
+            >
+              {products.map((product, index) => (
+                <Grid item xs={2} sm={4} md={4} key={index}>
+                  <ProductItem item={product} />
+                </Grid>
+              ))}
+            </Grid>
+            <Box className={classes.pagination}>
+              <Pagination
+                sx={{
+                  position: "relative",
+                  width: "auto",
+                  backgroundColor: "white",
+                }}
+                count={3}
+                shape="rounded"
+                hidePrevButton
+                onChange={handleChange}
+                renderItem={(item) => (
+                  <PaginationItem
+                    sx={{
+                      backgroundColor: "white",
+                    }}
+                    components={{ next: Next }}
+                    {...item}
+                    classes={{ selected: classes.selected }}
+                  />
+                )}
+              />
+            </Box>
+          </>
+        ) : (
+          <Box
+            sx={{
+              color: "#E69A3A",
+              height: "40vh",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
           >
-            {products.map((product, index) => (
-              <Grid item xs={2} sm={4} md={4} key={index}>
-                <ProductItem item={product} />
-              </Grid>
-            ))}
-          </Grid>
-          <Box className={classes.pagination}>
-            <Pagination
-              sx={{
-                position: "relative",
-                width: "auto",
-                backgroundColor: "white",
-              }}
-              count={3}
-              shape="rounded"
-              hidePrevButton
-              onChange={handleChange}
-              renderItem={(item) => (
-                <PaginationItem
-                  sx={{
-                    backgroundColor: "white",
-                  }}
-                  components={{ next: Next }}
-                  {...item}
-                  classes={{ selected: classes.selected }}
-                />
-              )}
-            />
+            <CircularProgress color="inherit" />
           </Box>
-        </Box>
-      ) : (
-        <Box sx={{ flexGrow: 1, textAlign: "center" }}>
-          <h3>Loading..</h3>
-        </Box>
-      )}
+        )}
+      </Box>
     </>
   );
 }

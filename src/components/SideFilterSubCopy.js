@@ -67,8 +67,8 @@ export default function SideFilter(props) {
   const [open, setOpen] = React.useState(false);
   const [listOpen, setListOpen] = React.useState(false);
   const [checked, setChecked] = React.useState([]);
-  const Category = props.List;
-  console.log(props.List);
+  const Category = [...props.Lists];
+
   const classes = useStyles();
 
   const handleToggle = (value) => () => {
@@ -134,20 +134,20 @@ export default function SideFilter(props) {
             {open ? <ExpandLess /> : <ExpandMore />}
           </ListItemButton>
           <Collapse in={open} timeout="auto" unmountOnExit>
-            {Category.slice(0, 3).map((item, index) => {
-              const labelId = `checkbox-list-label-${item}`;
+            {Category.slice(0, 4).map((item, index) => {
+              const labelId = `checkbox-list-label-${item.title}`;
 
               return (
                 <StyledList key={index}>
                   <StyledListItemButton
                     sx={{ pl: 1 }}
-                    onClick={handleToggle(item)}
+                    onClick={handleToggle(item.title)}
                   >
                     <StyledListItemIcon>
                       <Checkbox
                         size="large"
                         edge="start"
-                        checked={checked.indexOf(item) !== -1}
+                        checked={checked.indexOf(item.title) !== -1}
                         tabIndex={-1}
                         disableRipple
                         inputProps={{ "aria-labelledby": labelId }}
@@ -162,26 +162,75 @@ export default function SideFilter(props) {
                         }}
                       />
                     </StyledListItemIcon>
-                    <ListItemText id={labelId} primary={`${item}`} />
+                    <ListItemText id={labelId} primary={`${item.title}`} />
+
+                    {checked.indexOf(item.title) !== -1 ? (
+                      <ExpandLess />
+                    ) : (
+                      <ExpandMore />
+                    )}
                   </StyledListItemButton>
+                  <Collapse
+                    in={checked.indexOf(item.title) !== -1}
+                    timeout="auto"
+                    unmountOnExit
+                  >
+                    {item.subCategory.map((list, index) => {
+                      const labelListId = `checkbox-list-label-${list}`;
+                      return (
+                        <StyledList className={classes.list} key={index}>
+                          <StyledListListItemButton
+                            sx={{ pl: "2.5rem" }}
+                            onClick={handleItemToggle(list)}
+                          >
+                            <StyledListItemIcon>
+                              <Checkbox
+                                size="large"
+                                edge="start"
+                                checked={checked.indexOf(list) !== -1}
+                                tabIndex={-1}
+                                disableRipple
+                                inputProps={{
+                                  "aria-labelledby": labelListId,
+                                }}
+                                sx={{
+                                  color: "black",
+                                  "&.Mui-checked": {
+                                    color: "black",
+                                  },
+                                }}
+                                style={{
+                                  transform: "scale(.8)",
+                                }}
+                              />
+                            </StyledListItemIcon>
+                            <ListItemText
+                              id={labelListId}
+                              primary={`${list}`}
+                            />
+                          </StyledListListItemButton>
+                        </StyledList>
+                      );
+                    })}
+                  </Collapse>
                 </StyledList>
               );
             })}
             <Collapse in={expanded} timeout="auto" unmountOnExit>
-              {Category.slice(3, Category.length).map((item, index) => {
-                const labelId = `checkbox-list-label-${item}`;
+              {Category.slice(4, Category.length).map((item, index) => {
+                const labelId = `checkbox-list-label-${item.title}`;
 
                 return (
                   <StyledList key={index}>
                     <StyledListItemButton
                       sx={{ pl: 1 }}
-                      onClick={handleToggle(item)}
+                      onClick={handleToggle(item.title)}
                     >
                       <StyledListItemIcon>
                         <Checkbox
                           size="large"
                           edge="start"
-                          checked={checked.indexOf(item) !== -1}
+                          checked={checked.indexOf(item.title) !== -1}
                           tabIndex={-1}
                           disableRipple
                           inputProps={{ "aria-labelledby": labelId }}
@@ -196,8 +245,57 @@ export default function SideFilter(props) {
                           }}
                         />
                       </StyledListItemIcon>
-                      <ListItemText id={labelId} primary={`${item}`} />
+                      <ListItemText id={labelId} primary={`${item.title}`} />
+
+                      {checked.indexOf(item.title) !== -1 ? (
+                        <ExpandLess />
+                      ) : (
+                        <ExpandMore />
+                      )}
                     </StyledListItemButton>
+                    <Collapse
+                      in={checked.indexOf(item.title) !== -1}
+                      timeout="auto"
+                      unmountOnExit
+                    >
+                      {item.subCategory.map((list, index) => {
+                        const labelListId = `checkbox-list-label-${list}`;
+                        return (
+                          <StyledList className={classes.list} key={index}>
+                            <StyledListListItemButton
+                              sx={{ pl: "2.5rem" }}
+                              onClick={handleItemToggle(list)}
+                            >
+                              <StyledListItemIcon>
+                                <Checkbox
+                                  size="large"
+                                  edge="start"
+                                  checked={checked.indexOf(list) !== -1}
+                                  tabIndex={-1}
+                                  disableRipple
+                                  inputProps={{
+                                    "aria-labelledby": labelListId,
+                                  }}
+                                  sx={{
+                                    color: "black",
+                                    "&.Mui-checked": {
+                                      color: "black",
+                                    },
+                                  }}
+                                  style={{
+                                    transform: "scale(.8)",
+                                  }}
+                                />
+                              </StyledListItemIcon>
+                              <ListItemText
+                                id={labelListId}
+                                primary={`${list}`}
+                              />
+                            </StyledListListItemButton>
+                          </StyledList>
+                        );
+                      })}
+                    </Collapse>
                   </StyledList>
                 );
               })}

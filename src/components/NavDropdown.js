@@ -25,10 +25,6 @@ const links = [
     title: "Jewellery",
     nav: "jewellery",
   },
-  {
-    title: "Bags",
-    nav: "bags",
-  },
 ];
 
 const useStyles = makeStyles({

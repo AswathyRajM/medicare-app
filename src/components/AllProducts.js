@@ -1,10 +1,12 @@
-import React from "react";
-import ProductContainer from "../components/ProductsContainer";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import ProductContainer from "./ProductsContainer";
 import { makeStyles } from "@mui/styles";
 import { Box } from "@mui/system";
-import SideFilter from "../components/SideFilter";
-import ProductForm from "../components/ProductForm";
-import CustomizedSlider from "../components/CustomizedSlider";
+import SideFilter from "./SideFilter";
+import ProductForm from "./ProductForm";
+import CustomizedSlider from "./CustomizedSlider";
+import { fetchCategories } from "../redux/Actions/products";
 
 const useStyles = makeStyles({
   conatiner: {
@@ -44,7 +46,7 @@ const useStyles = makeStyles({
   },
 });
 
-function Home() {
+function AllProducts() {
   const classes = useStyles();
   const Category = [
     {
@@ -95,18 +97,27 @@ function Home() {
       subCategory: ["Orange4", "Apple4", "Mango4"],
     },
   ];
+  const dispatch = useDispatch();
+  const categoriesData = useSelector((state) => state.categories);
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    dispatch(fetchCategories());
+    if (categoriesData !== undefined) {
+      setCategories(categoriesData);
+    }
+  }, [dispatch]);
   return (
     <Box className={classes.conatiner}>
       <Box className={classes.boxflex}>
         <Box className={classes.categoryContainer}>
           <Box className={classes.sidemenu}>
-            <SideFilter title={"Category"} Lists={Category} />
+            <SideFilter title={"Category"} List={categoriesData} />
           </Box>
           <Box className={classes.sidemenu}>
-            <SideFilter title={"Brands"} Lists={Brands} />
+            <SideFilter title={"Brands"} List={categoriesData} />
           </Box>
           <Box className={classes.sidemenu}>
-            <ProductForm title={"Product Form"} Lists={Brands} />
+            <ProductForm Lists={Brands} />
           </Box>
           <Box className={classes.sidemenu}>
             <CustomizedSlider />
@@ -120,4 +131,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default AllProducts;

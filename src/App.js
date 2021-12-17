@@ -2,12 +2,11 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import "./App.css";
 import NavDropdown from "./components/NavDropdown";
-import Home from "./components/Home";
+import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import Electronics from "./pages/Electronics";
 import WomensCloths from "./pages/WomesCloths";
 import MensCloths from "./pages/MensCloths";
-import Bags from "./pages/Bags";
 import Jewellery from "./pages/Jewellery";
 
 function App() {
@@ -21,7 +20,6 @@ function App() {
         <Route path="electronics" element={<Electronics />} />
         <Route path="womens-cloths" element={<WomensCloths />} />
         <Route path="mens-cloths" element={<MensCloths />} />
-        <Route path="bags" element={<Bags />} />
         <Route path="jewellery" element={<Jewellery />} />
         <Route
           path="*"

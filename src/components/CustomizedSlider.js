@@ -79,7 +79,7 @@ const AirbnbSlider = styled(Slider)(({ theme }) => ({
 
 export default function CustomizedSlider() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   const handleClick = (value) => () => {
     setOpen(!open);

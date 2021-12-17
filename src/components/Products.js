@@ -8,7 +8,7 @@ import { Typography } from "@mui/material";
 import PaginationItem from "@mui/material/PaginationItem";
 import { makeStyles } from "@mui/styles";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchProducts } from "../redux/action";
+import { fetchProducts } from "../redux/Actions/products";
 
 const useStyles = makeStyles({
   next: {

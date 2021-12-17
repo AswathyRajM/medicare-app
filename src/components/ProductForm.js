@@ -105,7 +105,7 @@ export default function ProductForm(props) {
             disableTypography
             primary={
               <StyledTypography className={classes.nodeText}>
-                {props.title}
+                Product Form
               </StyledTypography>
             }
           />

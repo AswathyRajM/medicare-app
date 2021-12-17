@@ -1,11 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AllProducts from "../components/AllProducts";
 
 function WomesCloths() {
-  return (
-    <div>
-      <h2>WomesCloths</h2>
-    </div>
-  );
+  useEffect(() => {}, []);
+  return <AllProducts />;
 }
 
 export default WomesCloths;
